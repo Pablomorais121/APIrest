@@ -36,10 +36,9 @@ const login = async (req, res) => {
         if(!isMatch){
             return res.status(400).json({message: "Credenciales inválidas"});
         }
-
         const expiration = moment().add(30, "days").unix();
 
-        const token = jwt.sign({id: user._id, exp: expiration}, process_params.env.JWT_SECRET);
+        const token = jwt.sign({id: user._id, exp: expiration}, process.env.JWT_SECRET);
         res.json({message: "Login exitoso", token, expiresIn: "30 días"});
     }catch(error){
         res.status(500).json({message: "Error al iniciar sesión", error});

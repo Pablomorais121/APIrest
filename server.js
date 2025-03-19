@@ -6,10 +6,11 @@ const sensorRoutes = require('./routes/sensors.routes');
 const readingRoutes = require('./routes/readings.routes');
 
 var app = express();
-var port = 3000;
+var port = 9000;
 
 connectDB();
 
+//Configuracion
 app.use(bodyParser.urlencoded({ extended: true }));
 app.use(bodyParser.json());
 app.use(cors({origin:['http://localhost:3000', 'http://192.168.1.X']}));

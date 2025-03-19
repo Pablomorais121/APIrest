@@ -2,7 +2,7 @@ require('dotenv').config();
 const jwt = require('jsonwebtoken');
 
 const authMiddleware = (req, res, next) => {
-    let token = req.headers('Authorization');
+    let token = req.header('Authorization');
 
     if(!token){
         return res.status(401).json({message: 'Acceso denegado, no hay token.'});

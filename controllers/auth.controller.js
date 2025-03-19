@@ -8,14 +8,13 @@ require('dotenv').config();
 const register = async (req, res) => {
     try{
         const {name, email, password} = req.body;
-
-        if (!name || !password){
+        if (!email || !password){
             return res.status(400).json({message: "Email y contraseña obligatorios"});
         }
 
-        const salt = await bcrypt.getSalt(10);
+        const salt =  await bcrypt.genSalt(10);
         const hashedPassword = await bcrypt.hash(password, salt);
-
+        
         const newUser = new User({name, email, password: hashedPassword});
         await newUser.save();
 

@@ -16,7 +16,7 @@ connectDB();
 app.use(bodyParser.urlencoded({ extended: true }));
 app.use(bodyParser.json());
 app.use(cors({origin:['http://localhost:3000', 'http://192.168.1.X']}));
-app.use((res,next) => {
+app.use((req, res,next) => {
     res.setHeader('Content-Security-Policy', "default-src 'self'");
     res.setHeader('X-Content-Type-Options', 'nosniff');
     res.setHeader('X-Frame-Options', 'DENY');

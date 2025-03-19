@@ -11,7 +11,7 @@ const authMiddleware = (req, res, next) => {
     token = token.split(" ")[1];
 
     try{
-        const decode = jwt.verify(token, process_params.env.JWT_SECRET);
+        const decoded = jwt.verify(token, process_params.env.JWT_SECRET);
         req.user = decoded;
         next();
     } catch(error) {

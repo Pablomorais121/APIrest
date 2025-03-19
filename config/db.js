@@ -1,6 +1,7 @@
 const mongoose = require('mongoose')
+require('dotenv').config();
 
-const MONGO_URI = 'mongodb://Pablo:121@localhost:27017/sensores?authSource=admin';
+const MONGO_URI = process.env.MONGO_CREDENTIALS || 'mongodb://localhost:27017/sensores';
 
 const connectDB = async () =>{
     try{

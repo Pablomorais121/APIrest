@@ -7,6 +7,8 @@ require('dotenv').config();
 
 const register = async (req, res) => {
     try{
+        const {name, email, password} = req.body;
+
         if (!name || !password){
             return res.status(400).json({message: "Email y contraseña obligatorios"});
         }
@@ -29,7 +31,7 @@ const login = async (req, res) => {
         const user = await User.findOne({email});
 
         if(!user){
-            return res..status(400).json({message: "Credenciales inválidas"});
+            return res.status(400).json({message: "Credenciales inválidas"});
         }
         const isMatch = await bcrypt.compare(password, user.password);
         if(!isMatch){

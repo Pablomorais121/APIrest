@@ -7,8 +7,11 @@ const sensorRoutes = require('./routes/sensors.routes');
 const readingRoutes = require('./routes/readings.routes');
 const authRoutes = require('./routes/auth.routes'); 
 
+var fs = require('fs');
+var https = require('https');
+
 var app = express();
-var port = 3000 || process.env.PORT;
+var port = 443 || process.env.PORT;
 
 connectDB();
 
@@ -30,4 +33,12 @@ app.use('/auth', authRoutes);
 
 app.get('/test', (req ,res) => res.json({msg: 'El API REST funciona!'}));
 
-app.listen(port, () => console.log(`Servidor corriendo en el puerto ${port}`));
+var options={
+    key: fs.readFileSync(__dirname + '/SSL/apirest.key'),
+    cert: fs.readFileSync(__dirname + '/SSL/apirestFirmado.crt'),
+    passphrase: 'ejemplo'
+};
+
+https.createServer(options, app).listen(port, function(){
+    console.log('servidor node.js funcionando en el puerto: ' + port);
+});

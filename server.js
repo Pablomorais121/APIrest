@@ -7,6 +7,9 @@ const sensorRoutes = require('./routes/sensors.routes');
 const readingRoutes = require('./routes/readings.routes');
 const authRoutes = require('./routes/auth.routes'); 
 
+const mqttBroker = require('./services/broker');
+mqttBroker. startBroker();
+
 var fs = require('fs');
 var https = require('https');
 

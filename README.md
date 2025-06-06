@@ -42,7 +42,7 @@ Este proyecto es una API REST diseñada para gestionar datos de manera eficiente
 
 1. Clona este repositorio:
     ```bash
-    git clone https://github.com/usuario/APIrest.git
+    git clone https://github.com/Pablomorais121/APIrest.git
     ```
 2. Instala las dependencias:
     ```bash
